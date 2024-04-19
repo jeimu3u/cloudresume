@@ -1,0 +1,90 @@
+/* General body styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f0f2f5;
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+/* Header styles */
+header {
+    background-color: #fff;
+    border-bottom: 2px solid #0077cc;
+    padding: 20px 30px;
+}
+
+header h1 {
+    margin: 0 0 10px 0;
+    color: #0077cc;
+}
+
+header p {
+    margin: 5px 0;
+    font-size: 16px;
+}
+
+header a {
+    color: #0077cc;
+    text-decoration: none;
+}
+
+header a:hover {
+    text-decoration: underline;
+}
+
+/* Section styles */
+section {
+    background-color: #fff;
+    margin-top: 20px;
+    padding: 20px 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+h2 {
+    color: #333;
+    border-bottom: 2px solid #0077cc;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+/* Job and education blocks */
+.job, .education {
+    margin-bottom: 20px;
+}
+
+.job h3, .education h2 {
+    margin-top: 0;
+}
+
+ul {
+    list-style: inside square;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+/* Link styling */
+a:link, a:visited {
+    color: #0077cc;
+    text-decoration: none;
+}
+
+a:hover, a:active {
+    text-decoration: underline;
+}
+
+/* Responsive design adjustments */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    header, section {
+        padding: 15px;
+    }
+}
