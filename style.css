@@ -107,7 +107,7 @@ section h2 {
 }
 
 ul {
-    list-style: inside square;
+    list-style: outside square;
     padding-left: 20px;
 }
 
@@ -156,6 +156,6 @@ a:hover, a:active {
     }
 
     ul {
-        padding-left: 10px; /* Reduce padding for mobile devices */
+        padding-left: 10px;
     }
 }
