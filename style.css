@@ -37,7 +37,7 @@ header h2 {
 
 header p {
     margin: 10px 0;
-    font-size: 12px; 
+    font-size: 16px; 
 }
 
 header a {
@@ -84,7 +84,7 @@ section {
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-h2 {
+section h2 {
     color: #333;
     border-bottom: 2px solid #0077cc;
     padding-bottom: 10px;
