@@ -108,7 +108,6 @@ section h2 {
 
 ul {
     list-style: outside square;
-    padding-left: 20px;
 }
 
 li {
@@ -153,9 +152,5 @@ a:hover, a:active {
     .contact-links a i {
         margin-right: 3px;
         font-size: 18px;
-    }
-
-    ul {
-        padding-left: 10px;
     }
 }
