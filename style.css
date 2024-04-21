@@ -55,8 +55,9 @@ header a:hover {
 }
 
 .contact-links {
-    margin: 10px auto 0 auto;
+    margin: 10px auto;
     display: flex;
+    justify-content: center;
     align-items: center;
     gap: 15px;
 }
