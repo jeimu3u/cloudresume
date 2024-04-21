@@ -76,6 +76,10 @@ li {
     margin-bottom: 10px;
 }
 
+p.italic {
+    font-style: italic;
+}
+
 /* Link styling */
 a:link, a:visited {
     color: #0077cc;
