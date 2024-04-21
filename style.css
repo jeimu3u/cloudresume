@@ -42,6 +42,20 @@ header a:hover {
     text-decoration: underline;
 }
 
+.social-links {
+    margin-top: 10px;
+}
+
+.social-links a {
+    margin-right: 15px;
+    color: #0077cc;
+    font-size: 24px;
+}
+
+.social-links a:hover {
+    color: #0056b3;
+}
+
 /* Section styles */
 section {
     background-color: #fff;
@@ -76,8 +90,8 @@ li {
     margin-bottom: 10px;
 }
 
-p.italic {
-    font-style: italic;
+p.date {
+    font-style: bold;
 }
 
 /* Link styling */
@@ -100,5 +114,8 @@ a:hover, a:active {
     }
     header p {
         font-size: 16px;
+    }
+    .social-links a {
+        font-size: 20px; /* slightly smaller icons on mobile */
     }
 }
