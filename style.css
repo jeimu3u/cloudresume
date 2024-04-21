@@ -42,18 +42,29 @@ header a:hover {
     text-decoration: underline;
 }
 
-.social-links {
+.contact-links {
     margin-top: 10px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
 }
 
-.social-links a {
-    margin-right: 15px;
+.contact-links a {
     color: #0077cc;
-    font-size: 24px;
+    font-size: 16px;
+    text-decoration: none; 
+    display: flex; 
+    align-items: center;
 }
 
-.social-links a:hover {
-    color: #0056b3;
+.contact-links a i {
+    margin-right: 5px;
+    font-size: 20px;
+}
+
+.contact-links a:hover {
+    text-decoration: underline; 
+    color: #0056b3; 
 }
 
 /* Section styles */
@@ -104,7 +115,6 @@ a:hover, a:active {
     text-decoration: underline;
 }
 
-/* Responsive design adjustments */
 @media (max-width: 768px) {
     body, header, section {
         padding: 10px;
@@ -112,10 +122,11 @@ a:hover, a:active {
     header h1 {
         font-size: 28px;
     }
-    header p {
-        font-size: 16px;
+    .contact-links a {
+        font-size: 14px;
     }
-    .social-links a {
-        font-size: 20px; /* slightly smaller icons on mobile */
+    .contact-links a i {
+        margin-right: 3px;
+        font-size: 18px;
     }
 }
