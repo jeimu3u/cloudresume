@@ -38,6 +38,7 @@ header a:hover {
 /* Section styles */
 section {
     background-color: #fff;
+    max-width: 1200px;
     margin-top: 20px;
     padding: 20px 30px;
     border-radius: 8px;
