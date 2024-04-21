@@ -108,6 +108,7 @@ section h2 {
 
 ul {
     list-style: inside square;
+    padding-left: 20px;
 }
 
 li {
@@ -132,20 +133,29 @@ a:hover, a:active {
     body, header, section {
         padding: 10px;
     }
+
     header h1 {
         font-size: 28px;
     }
+
     header h2 {
         font-size: 18px;
     }
+
     header h3 {
         font-size: 14px;
     }
+
     .contact-links a {
         font-size: 14px;
     }
+
     .contact-links a i {
         margin-right: 3px;
         font-size: 18px;
+    }
+
+    ul {
+        padding-left: 10px; /* Reduce padding for mobile devices */
     }
 }
