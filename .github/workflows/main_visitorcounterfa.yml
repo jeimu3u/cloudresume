@@ -45,8 +45,9 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: python-app
-          path: |
-            release.zip
+          run: |
+            cd functionApp
+            zip -r ../release.zip .
             !venv/
 
   deploy:
