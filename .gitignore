@@ -1,6 +1,9 @@
 # Ignore the virtual environment folder
 functionapp/venv/
 
+# Ignore the VSCode folder
+.vscode
+
 # Ignore temporary files
 .DS_Store
 *.swp
