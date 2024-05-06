@@ -7,13 +7,13 @@ window.onload = function() {
             return response.json();
         })
         .then(data => {
-            if (data.count === undefined) {
-                throw new Error('Count is undefined in the response');
+            if (typeof data.count !== 'number') {
+                throw new Error('Count is missing or not a number in the response');
             }
-            document.getElementById('visitorCount').innerText = data.count;
+            document.getElementById('visitorCount').textContent = `Visitors: ${data.count}`;
         })
         .catch(error => {
             console.error('Error fetching visitor count:', error);
-            document.getElementById('visitorCount').innerText = 'Error';
+            document.getElementById('visitorCount').textContent = 'Visitor count unavailable';
         });
 };
