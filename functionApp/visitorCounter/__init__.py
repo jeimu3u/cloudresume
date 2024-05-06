@@ -15,13 +15,15 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
         entities = table_client.query_entities(query, results_per_page=1)
         entity = next(entities, None)
 
-        # Create new or update existing entity
+        # Check if entity exists, convert 'Count' to int, increment, and save
         if entity is None:
-            entity = {'PartitionKey': 'Counter', 'RowKey': 'Visitor', 'Count': 1}
-            table_client.create_entity(entity)
+            entity = {'PartitionKey': 'Counter', 'RowKey': 'Visitor', 'Count': 1}  # Assume int if creating new
         else:
-            entity['Count'] += 1
-            table_client.update_entity(entity, mode='Replace')
+            # Convert 'Count' from string to int before incrementing
+            entity['Count'] = int(entity['Count']) + 1
+        
+        # Upsert the entity in the database
+        table_client.upsert_entity(entity)
 
         # Return the updated count
         return func.HttpResponse(json.dumps({"count": entity['Count']}), mimetype="application/json", status_code=200)
