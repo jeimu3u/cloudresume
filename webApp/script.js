@@ -1,5 +1,5 @@
 window.onload = function() {
-    fetch('https://visitorcounterfa.azurewebsites.net/api/visitor')
+    fetch('https://visitorcounterfa.azurewebsites.net/api/visitorCounter')
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok: ' + response.statusText);
