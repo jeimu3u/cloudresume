@@ -27,7 +27,8 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
             status_code=200
         )
     except Exception as e:
+        error_message = f"Error processing your request: {e}"
         return func.HttpResponse(
-            "Error processing your request: " + str(e),
+            error_message,
             status_code=500
         )
