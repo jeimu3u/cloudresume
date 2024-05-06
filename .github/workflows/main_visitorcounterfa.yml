@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
 
 env:
-  PYTHON_VERSION: '3.11'  # Ensure this version is supported in your runtime on Azure
+  PYTHON_VERSION: '3.11'
 
 jobs:
   build:
@@ -18,7 +18,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup Python
+      - name: Setup Python version
         uses: actions/setup-python@v2
         with:
           python-version: ${{ env.PYTHON_VERSION }}
@@ -30,6 +30,8 @@ jobs:
 
       - name: Install dependencies
         run: pip install -r ./functionApp/requirements.txt
+
+      # Optional: Add step to run tests here
 
       - name: Zip artifact for deployment
         run: |
@@ -47,6 +49,7 @@ jobs:
     needs: build
     environment:
       name: 'Production'
+      url: ${{ steps.deploy-to-function.outputs.webapp-url }}
 
     steps:
       - name: Download artifact from build job
@@ -63,6 +66,6 @@ jobs:
           app-name: 'visitorCounterFA'
           slot-name: 'Production'
           package: '.'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_0E41AA938A9545F98866C9978C46BF48 }}
           scm-do-build-during-deployment: true
           enable-oryx-build: true
