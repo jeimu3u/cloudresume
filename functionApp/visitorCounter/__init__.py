@@ -21,14 +21,19 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
         entity['Count'] += 1
         table_client.update_entity(entity, mode='Replace')
 
+        # Ensure that the count is converted to a string before concatenating or using in JSON.
+        count_str = str(entity['Count'])
+
         return func.HttpResponse(
-            json.dumps({"count": entity['Count']}),
+            json.dumps({"count": count_str}),  # Convert count to string safely before dumping to JSON
             mimetype="application/json",
             status_code=200
         )
     except Exception as e:
-        error_message = f"Error processing your request: {e}"
+        # Explicitly convert exception message to string in a safer manner
+        error_message = json.dumps({"error": str(e)})
         return func.HttpResponse(
             error_message,
+            mimetype="application/json",
             status_code=500
         )
