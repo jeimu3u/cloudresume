@@ -36,13 +36,13 @@ jobs:
       - name: Zip artifact for deployment
         run: |
           cd functionApp
-          zip -r ../release.zip .
+          zip -r ../visitorCounterFA.zip .
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
         with:
           name: visitorCounterFA
-          path: release.zip
+          path: visitorCounterFA.zip
 
   deploy:
     runs-on: ubuntu-latest
@@ -58,7 +58,7 @@ jobs:
           name: visitorCounterFA
 
       - name: Unzip artifact for deployment
-        run: unzip release.zip
+        run: unzip visitorCounterFA.zip
 
       - name: 'Deploy to Azure Functions'
         uses: Azure/functions-action@v1
