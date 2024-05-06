@@ -5,13 +5,15 @@ import json
 
 def main(req: func.HttpRequest) -> func.HttpResponse:
     try:
-        connection_string = os.environ["AzureWebJobsStorage"]
+        connection_string = os.environ["COSMOSDB_CONNECTION_STRING"]
         table_name = "VisitorCounterDB"
+        
         service = TableServiceClient.from_connection_string(conn_str=connection_string)
         table_client = service.get_table_client(table_name=table_name)
 
         entities = table_client.query_entities("PartitionKey eq 'Counter' and RowKey eq 'Visitor'", results_per_page=1)
         entity = next(entities, None)
+
         if entity is None:
             entity = {'PartitionKey': 'Counter', 'RowKey': 'Visitor', 'Count': 0}
             table_client.create_entity(entity)
