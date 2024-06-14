@@ -1,5 +1,5 @@
 # Ignore the virtual environment folder
-functionapp/venv/
+functionapp/.venv/
 
 # Ignore the VSCode folder
 .vscode
