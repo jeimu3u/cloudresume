@@ -4,125 +4,450 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="format-detection" content="telephone=no">
-    <title>James Chambers - Cloud Infrastructure Engineer (DevOps) | Azure Specialist | Driving Efficiency through Automation & CI/CD</title>
+    <meta name="description" content="James Chambers - Cloud DevOps Platform Consultant & Scrum Master | Azure & AWS | SC Cleared | Infrastructure as Code, CI/CD, Kubernetes">
+    <meta property="og:title" content="James Chambers - Cloud DevOps Platform Consultant & Scrum Master">
+    <meta property="og:description" content="Bringing Law & Order to Azure and AWS Cloud Infrastructure. DevOps, Scrum Master, Kubernetes, and Infrastructure as Code specialist.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://jameschambers.me.uk">
+    <title>James Chambers - Cloud DevOps Platform Consultant & Scrum Master | Azure & AWS</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous">
 </head>
 <body data-owner="4036">
-    <header>
-        <h1>James Chambers</h1>
-        <h2>Cloud DevOps Engineer</h2>
-        <h3>SC Cleared</h3>
-        <div class="contact-links">
-            <a href="mailto:cloudresume.squire950@dralias.com"><i class="fas fa-envelope"></i></a>
-            <a href="https://jameschambers.me.uk" target="_blank"><i class="fas fa-globe"></i></a>
-            <a href="https://maps.app.goo.gl/xviHaFk4oEv3B1sv7" target="_blank"><i class="fa-solid fa-location-dot"></i></a>
-            <a href="https://www.linkedin.com/in/james-c-813a15255/" target="_blank"><i class="fab fa-linkedin"></i></a>
-            <a href="https://github.com/jeimu3u" target="_blank"><i class="fab fa-github"></i></a>
-            <a href="https://dev.to/jameschambers" target="_blank"><i class="fab fa-dev"></i></a>
-        </div>
-    </header>    
 
-    <section class="profile">
-        <h2>Professional Profile</h2>
-        <p>With a solid background in freelance web development spanning over 7 years, I have expanded my expertise to include cloud infrastructure engineering, with a particular focus on the Azure platform. My experience encompasses Infrastructure as Code (IaC) and Continuous Integration/Continuous Deployment (CI/CD), underpinned by key Azure certifications.</p>
-    </section>
-
-    <section class="certifications">
-        <h2>Certifications</h2>
-        <ul>
-            <li><a href="https://az-104.jameschambers.me.uk" target="_blank">AZ-104 Microsoft Azure Administrator</a></li>
-            <li><a href="https://az-900.jameschambers.me.uk" target="_blank">AZ-900 Microsoft Azure Fundamentals</a></li>
-            <li><a href="https://sc-900.jameschambers.me.uk" target="_blank">SC-900 Microsoft Security Compliance and Identity Fundamentals</a></li>
-            <li><a href="https://ms-900.jameschambers.me.uk" target="_blank">MS-900 Microsoft 365 Fundamentals</a></li>
-            <li><a href="/assets/images/JC_ITIL_4_Foundation.png" data-lightbox="ITIL" data-title="ITIL 4 Foundation Certificate in IT Service Management">ITIL 4 Foundation Certificate in IT Service Management</a></li>
-        </ul>
-    </section>
-
-    <section class="experience">
-        <h2>Experience</h2>
-
-        <div class="job">
-            <h3>Cloud DevOps Engineer - Kortext Ltd</h3>
-            <p class="date">08/2024 - Present: Remote, UK and EU</p>
-            <ul>
-                <li>Designed, deployed, and managed Microsoft Azure infrastructure, ensuring high availability, scalability, and security in compliance with GDPR, PIPEDA, and SOC 2 regulations.</li>
-                <li>Developed Infrastructure as Code (IaC) solutions using Bicep and ARM templates, automating provisioning and management workflows via Azure DevOps.</li>
-                <li>Optimised cloud performance through Azure Monitor, Log Analytics, and Application Insights, implementing automated scaling and recovery mechanisms.</li>
-                <li>Enhanced and maintained CI/CD pipelines in Azure DevOps, enabling seamless application deployments and integrations across development teams.</li>
-                <li>Applied FinOps principles by monitoring cloud costs with Azure Cost Management, identifying optimisation opportunities, and recommending cost-saving measures.</li>
-                <li>Implemented Azure-native security solutions, including Azure Security Center, Defender, and Key Vault, enforcing Zero Trust principles with RBAC and MFA.</li>
-                <li>Collaborated cross-functionally to troubleshoot and resolve Azure-related operational issues while ensuring solutions align with business objectives.</li>
-                <li>Created and maintained comprehensive documentation for Azure infrastructure, automation processes, and workflows, providing technical guidance to internal teams.</li>
+    <!-- Sticky Navigation -->
+    <nav id="navbar" class="navbar">
+        <div class="nav-container">
+            <a href="#hero" class="nav-logo">JC</a>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#profile" class="nav-link">Profile</a></li>
+                <li><a href="#certifications" class="nav-link">Certifications</a></li>
+                <li><a href="#experience" class="nav-link">Experience</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#education" class="nav-link">Education</a></li>
             </ul>
         </div>
+    </nav>
 
-        <div class="job">
-            <h3>Cloud Infrastructure Engineer - UK Government (DEFRA)</h3>
-            <p class="date">02/2023 - 08/2024</p>
-            <ul>
-                <li>Engineered robust 'lift and shift' strategies, enhancing major applications' performance on Azure, directly contributing to efficiency gains and operational cost reductions.</li>
-                <li>Proficient in optimising Azure services, including Compute, Storage, and Active Directory, to build scalable and secure cloud infrastructures.</li>
-                <li>Leveraged Azure DevOps, PowerShell, and Bicep to pioneer process automation, promoting efficiency and ensuring adherence to compliance standards.</li>
-                <li>Upheld stringent security measures and ensured compliance with UK Government policies, underpinned by AZ-900, AZ-104, and SC-900 Microsoft certifications.</li>
-                <li>Collaborated closely with multiple departments to ensure cloud solutions align with business strategies, driving innovation and organisational growth.</li>
-                <li>Committed to continuous learning and applying best practices in cloud technologies and security operations.</li>
-                <li>Applied Infrastructure as Code (IaC) methodologies to streamline and fortify cloud provisioning processes.</li>
-            </ul>
+    <!-- Hero Section -->
+    <header id="hero" class="hero">
+        <canvas id="particleCanvas"></canvas>
+        <div class="hero-content">
+            <div class="hero-photo">
+                <img src="assets/images/1708212489850.jpeg" alt="James Chambers" class="hero-img">
+            </div>
+            <h1 class="hero-name">James Chambers</h1>
+            <h2 class="hero-title">Cloud DevOps Platform Consultant & Scrum Master</h2>
+            <span class="hero-badge">SC Cleared</span>
+            <div class="typing-wrapper">
+                <span class="typing-text" id="typingText"></span>
+                <span class="typing-cursor">|</span>
+            </div>
+            <div class="hero-contacts">
+                <a href="mailto:cloudresume.squire950@dralias.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                <a href="https://jameschambers.me.uk" target="_blank" aria-label="Website"><i class="fas fa-globe"></i></a>
+                <a href="https://maps.app.goo.gl/wyCHedZGoEZMTFLW9" target="_blank" aria-label="Location"><i class="fa-solid fa-location-dot"></i></a>
+                <a href="https://www.linkedin.com/in/james-c-813a15255/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/jeimu3u" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- Professional Profile -->
+        <section id="profile" class="section">
+            <div class="section-inner">
+                <h2 class="section-title"><i class="fas fa-user-tie"></i> Professional Profile</h2>
+
+                <!-- Intro statement -->
+                <div class="profile-intro animate-on-scroll">
+                    <p>I'm a Cloud DevOps Engineer, Scrum Master, and team leader passionate about transforming cloud infrastructures across Azure and AWS platforms. With a diverse background uniquely blending technical expertise, <strong>agile leadership</strong>, and seven years of policing experience, I bring a distinctive skill set focused on <strong>team empowerment</strong>, <strong>project delivery</strong>, and <strong>operational excellence</strong>.</p>
+                </div>
+
+                <!-- Stat highlights -->
+                <div class="profile-stats animate-on-scroll">
+                    <div class="stat-item">
+                        <span class="stat-number">14+</span>
+                        <span class="stat-label">Years in Tech</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">7</span>
+                        <span class="stat-label">Years Policing</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">4</span>
+                        <span class="stat-label">Azure Certs</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">SC</span>
+                        <span class="stat-label">Cleared</span>
+                    </div>
+                </div>
+
+                <!-- Journey cards -->
+                <div class="profile-journey">
+                    <div class="journey-card animate-on-scroll">
+                        <div class="journey-icon"><i class="fas fa-code"></i></div>
+                        <div class="journey-content">
+                            <h3>The Foundation</h3>
+                            <p>My journey began 14 years ago in web development, establishing a robust technical foundation that underpins everything I build today.</p>
+                        </div>
+                    </div>
+                    <div class="journey-card animate-on-scroll">
+                        <div class="journey-icon"><i class="fas fa-shield-halved"></i></div>
+                        <div class="journey-content">
+                            <h3>The Edge</h3>
+                            <p>Seven years of policing, five as a Police Constable and two continuing as a Special Constable, honed resilience, leadership under pressure, and the ability to make critical decisions fast. Skills I now apply daily to lead DevOps teams and drive agile delivery.</p>
+                        </div>
+                    </div>
+                    <div class="journey-card animate-on-scroll">
+                        <div class="journey-icon"><i class="fas fa-people-group"></i></div>
+                        <div class="journey-content">
+                            <h3>The Leader</h3>
+                            <p>As a Scrum Master, I champion agile practices, facilitate sprint ceremonies, remove blockers for engineering teams, and drive cross-functional collaboration to deliver projects on time and to a high standard.</p>
+                        </div>
+                    </div>
+                    <div class="journey-card animate-on-scroll">
+                        <div class="journey-icon"><i class="fas fa-cloud"></i></div>
+                        <div class="journey-content">
+                            <h3>The Mission</h3>
+                            <p>Currently in the Higher Education sector, I lead initiatives deploying scalable, secure, and future-proof cloud solutions across Azure and AWS, backed by multiple Microsoft certifications.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mission quote -->
+                <blockquote class="profile-quote animate-on-scroll">
+                    <i class="fas fa-quote-left"></i>
+                    <p>My goal is to build automated, resilient cloud infrastructures that empower organisations to thrive, by leading high-performing teams through agile delivery, Infrastructure as Code, and robust CI/CD pipelines.</p>
+                </blockquote>
+            </div>
+        </section>
+
+        <!-- Certifications -->
+        <section id="certifications" class="section">
+            <div class="section-inner">
+                <h2 class="section-title"><i class="fas fa-certificate"></i> Certifications</h2>
+                <p class="cert-hint"><i class="fas fa-hand-pointer"></i> Click a certification to view credential</p>
+                <div class="cert-grid">
+                    <a href="https://az-104.jameschambers.me.uk" target="_blank" class="cert-card animate-on-scroll">
+                        <div class="cert-icon"><i class="fab fa-microsoft"></i></div>
+                        <h3>AZ-104</h3>
+                        <p>Microsoft Azure Administrator</p>
+                        <span class="cert-view">View credential <i class="fas fa-external-link-alt"></i></span>
+                    </a>
+                    <a href="https://az-900.jameschambers.me.uk" target="_blank" class="cert-card animate-on-scroll">
+                        <div class="cert-icon"><i class="fab fa-microsoft"></i></div>
+                        <h3>AZ-900</h3>
+                        <p>Microsoft Azure Fundamentals</p>
+                        <span class="cert-view">View credential <i class="fas fa-external-link-alt"></i></span>
+                    </a>
+                    <a href="https://sc-900.jameschambers.me.uk" target="_blank" class="cert-card animate-on-scroll">
+                        <div class="cert-icon"><i class="fas fa-shield-halved"></i></div>
+                        <h3>SC-900</h3>
+                        <p>Microsoft Security, Compliance &amp; Identity</p>
+                        <span class="cert-view">View credential <i class="fas fa-external-link-alt"></i></span>
+                    </a>
+                    <a href="https://ms-900.jameschambers.me.uk" target="_blank" class="cert-card animate-on-scroll">
+                        <div class="cert-icon"><i class="fab fa-microsoft"></i></div>
+                        <h3>MS-900</h3>
+                        <p>Microsoft 365 Fundamentals</p>
+                        <span class="cert-view">View credential <i class="fas fa-external-link-alt"></i></span>
+                    </a>
+                    <a href="#itil-lightbox" class="cert-card animate-on-scroll">
+                        <div class="cert-icon"><i class="fas fa-ticket"></i></div>
+                        <h3>ITIL 4</h3>
+                        <p>Foundation Certificate in IT Service Management</p>
+                        <span class="cert-view">View certificate <i class="fas fa-search-plus"></i></span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- CSS-Only Lightbox for ITIL Certificate -->
+        <div class="lightbox" id="itil-lightbox">
+            <a href="#certifications" class="lightbox-close" aria-label="Close lightbox">&times;</a>
+            <div class="lightbox-content">
+                <img src="assets/images/JC_ITIL_4_Foundation.png" alt="ITIL 4 Foundation Certificate" loading="lazy">
+            </div>
         </div>
 
-        <div class="job">
-            <h3>Police Constable - Northumbria Police</h3>
-            <p class="date">02/2018 - 02/2023: Newcastle, UK</p>
-            <ul>
-                <li>Served 4 years on Rapid Response, 1 year in Criminal Investigation Department (CID).</li>
-                <li>Communicated effectively within diverse communities and coordinated with experts to solve crimes.</li>
-                <li>Encouraged inter-departmental collaboration for crime prevention efforts.</li>
-                <li>Responded swiftly to public safety emergencies.</li>
-                <li>Skilled in intelligence reporting and stakeholder support for crime resolution.</li>
-            </ul>
+        <!-- Experience Timeline -->
+        <section id="experience" class="section">
+            <div class="section-inner">
+                <h2 class="section-title"><i class="fas fa-briefcase"></i> Experience</h2>
+                <div class="timeline">
+
+                    <!-- Kortext -->
+                    <div class="timeline-item left animate-on-scroll">
+                        <div class="timeline-dot tech"></div>
+                        <div class="timeline-card">
+                            <div class="timeline-header" role="button" tabindex="0" aria-expanded="false">
+                                <h3>Cloud DevOps Platform Consultant</h3>
+                                <span class="timeline-company">Kortext Ltd</span>
+                                <span class="timeline-date"><i class="far fa-calendar-alt"></i> 08/2024 - Present</span>
+                                <span class="timeline-location"><i class="fas fa-map-marker-alt"></i> Remote</span>
+                                <i class="fas fa-chevron-down timeline-toggle"></i>
+                            </div>
+                            <ul class="timeline-details">
+                                <li>Serve as Scrum Master, facilitating sprint planning, daily stand-ups, retrospectives, and backlog refinement for cross-functional engineering teams.</li>
+                                <li>Drive project delivery by removing impediments, tracking velocity, and ensuring alignment between stakeholders and delivery teams.</li>
+                                <li>Designed, deployed, and managed Microsoft Azure infrastructure, ensuring high availability, scalability, and security in compliance with GDPR, PIPEDA, and SOC 2 regulations.</li>
+                                <li>Developed Infrastructure as Code (IaC) solutions using Bicep and ARM templates, automating provisioning and management workflows via Azure DevOps.</li>
+                                <li>Optimised cloud performance through Azure Monitor, Log Analytics, and Application Insights, implementing automated scaling and recovery mechanisms.</li>
+                                <li>Enhanced and maintained CI/CD pipelines in Azure DevOps, enabling seamless application deployments and integrations across development teams.</li>
+                                <li>Applied FinOps principles by monitoring cloud costs with Azure Cost Management, identifying optimisation opportunities, and recommending cost-saving measures.</li>
+                                <li>Implemented Azure-native security solutions, including Azure Security Center, Defender, and Key Vault, enforcing Zero Trust principles with RBAC and MFA.</li>
+                                <li>Mentored and guided team members on DevOps best practices, agile workflows, and cloud architecture decisions.</li>
+                                <li>Created and maintained comprehensive documentation for Azure infrastructure, automation processes, and workflows, providing technical guidance to internal teams.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- DEFRA -->
+                    <div class="timeline-item right animate-on-scroll">
+                        <div class="timeline-dot tech"></div>
+                        <div class="timeline-card">
+                            <div class="timeline-header" role="button" tabindex="0" aria-expanded="false">
+                                <h3>Cloud Infrastructure Engineer</h3>
+                                <span class="timeline-company">UK Government (DEFRA)</span>
+                                <span class="timeline-date"><i class="far fa-calendar-alt"></i> 02/2023 - 08/2024</span>
+                                <span class="timeline-location"><i class="fas fa-map-marker-alt"></i> Remote</span>
+                                <i class="fas fa-chevron-down timeline-toggle"></i>
+                            </div>
+                            <ul class="timeline-details">
+                                <li>Engineered robust 'lift and shift' strategies, enhancing major applications' performance on Azure, directly contributing to efficiency gains and operational cost reductions.</li>
+                                <li>Participated in agile ceremonies and supported sprint delivery within a cross-functional team, contributing to continuous improvement and on-time releases.</li>
+                                <li>Proficient in optimising Azure services, including Compute, Storage, and Active Directory, to build scalable and secure cloud infrastructures.</li>
+                                <li>Leveraged Azure DevOps, PowerShell, and Bicep to pioneer process automation, promoting efficiency and ensuring adherence to compliance standards.</li>
+                                <li>Upheld stringent security measures and ensured compliance with UK Government policies, underpinned by AZ-900, AZ-104, and SC-900 Microsoft certifications.</li>
+                                <li>Collaborated closely with multiple departments and stakeholders to ensure cloud solutions align with business strategies, driving innovation and organisational growth.</li>
+                                <li>Applied Infrastructure as Code (IaC) methodologies to streamline and fortify cloud provisioning processes.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Special Constable -->
+                    <div class="timeline-item left animate-on-scroll">
+                        <div class="timeline-dot other"></div>
+                        <div class="timeline-card">
+                            <div class="timeline-header" role="button" tabindex="0" aria-expanded="false">
+                                <h3>Special Constable (Volunteer)</h3>
+                                <span class="timeline-company">Northumbria Police</span>
+                                <span class="timeline-date"><i class="far fa-calendar-alt"></i> 02/2023 - 10/2025</span>
+                                <span class="timeline-location"><i class="fas fa-map-marker-alt"></i> Newcastle, UK</span>
+                                <i class="fas fa-chevron-down timeline-toggle"></i>
+                            </div>
+                            <ul class="timeline-details">
+                                <li>Continued voluntary policing alongside a full-time DevOps career, demonstrating exceptional time management and commitment.</li>
+                                <li>Led small teams during operational deployments, coordinating response efforts and delegating tasks under pressure.</li>
+                                <li>Applied incident management and rapid decision-making skills directly transferable to IT incident response and on-call scenarios.</li>
+                                <li>Maintained SC-level vetting and upheld the highest standards of integrity and professionalism.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Police Constable -->
+                    <div class="timeline-item right animate-on-scroll">
+                        <div class="timeline-dot other"></div>
+                        <div class="timeline-card">
+                            <div class="timeline-header" role="button" tabindex="0" aria-expanded="false">
+                                <h3>Police Constable</h3>
+                                <span class="timeline-company">Northumbria Police</span>
+                                <span class="timeline-date"><i class="far fa-calendar-alt"></i> 02/2018 - 02/2023</span>
+                                <span class="timeline-location"><i class="fas fa-map-marker-alt"></i> Newcastle, UK</span>
+                                <i class="fas fa-chevron-down timeline-toggle"></i>
+                            </div>
+                            <ul class="timeline-details">
+                                <li>Served 4 years on Rapid Response, 1 year in Criminal Investigation Department (CID).</li>
+                                <li>Led team briefings and coordinated multi-unit responses to critical incidents, developing strong leadership and delegation skills.</li>
+                                <li>Communicated effectively within diverse communities and coordinated with specialists to resolve complex cases.</li>
+                                <li>Managed competing priorities under extreme pressure, building the resilience and composure now applied to incident management and sprint delivery.</li>
+                                <li>Skilled in intelligence reporting, evidence-based decision making, and stakeholder management.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Freelance -->
+                    <div class="timeline-item left animate-on-scroll">
+                        <div class="timeline-dot tech"></div>
+                        <div class="timeline-card">
+                            <div class="timeline-header" role="button" tabindex="0" aria-expanded="false">
+                                <h3>Frontend Web Developer</h3>
+                                <span class="timeline-company">Freelance</span>
+                                <span class="timeline-date"><i class="far fa-calendar-alt"></i> 06/2010 - 02/2018</span>
+                                <span class="timeline-location"><i class="fas fa-map-marker-alt"></i> Remote</span>
+                                <i class="fas fa-chevron-down timeline-toggle"></i>
+                            </div>
+                            <ul class="timeline-details">
+                                <li>Skilled in creating dynamic websites with HTML, CSS, JavaScript, PHP, and SQL, leveraging cloud-based technologies for scalability.</li>
+                                <li>Proficient in key development tools and secure command-line operations.</li>
+                                <li>Innovates user experiences through data-driven enhancement strategies.</li>
+                                <li>Executed quality-driven projects rapidly, maintaining user experience standards.</li>
+                                <li>Designed and analysed email campaigns, leveraging Google Analytics for optimisation.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Technical Skills -->
+        <section id="skills" class="section">
+            <div class="section-inner">
+                <h2 class="section-title"><i class="fas fa-code"></i> Technical Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-category animate-on-scroll">
+                        <h3><i class="fas fa-cloud"></i> Azure Cloud Platform</h3>
+                        <div class="skill-item">
+                            <div class="skill-info"><span>Azure Compute, Storage &amp; Networking</span><span>90%</span></div>
+                            <div class="skill-bar"><div class="skill-fill" data-width="90"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info"><span>Azure Active Directory / Entra ID</span><span>85%</span></div>
+                            <div class="skill-bar"><div class="skill-fill" data-width="85"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info"><span>Azure Monitor / Log Analytics / App Insights</span><span>85%</span></div>
+                            <div class="skill-bar"><div class="skill-fill" data-width="85"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info"><span>Azure Cost Management / FinOps</span><span>80%</span></div>
+                            <div class="skill-bar"><div class="skill-fill" data-width="80"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info"><span>Azure Functions / App Services</span><span>80%</span></div>
+                            <div class="skill-bar"><div class="skill-fill" data-width="80"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info"><span>AKS / Kubernetes</span><span>70%</span></div>
+                            <div class="skill-bar"><div class="skill-fill" data-width="70"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info"><span>Docker / ACR</span><span>70%</span></div>
+                            <div class="skill-bar"><div class="skill-fill" data-width="70"></div></div>
+                        </div>
+                    </div>
+                    <div class="skill-category animate-on-scroll">
+                        <h3><i class="fas fa-code-branch"></i> DevOps &amp; CI/CD</h3>
+                        <div class="skill-item">
+                            <div class="skill-info"><span>Azure DevOps Pipelines (YAML)</span><span>85%</span></div>
+                            <div class="skill-bar"><div class="skill-fill" data-width="85"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info"><span>GitHub Actions</span><span>75%</span></div>
+                            <div class="skill-bar"><div class="skill-fill" data-width="75"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info"><span>Bicep / ARM Templates (IaC)</span><span>85%</span></div>
+                            <div class="skill-bar"><div class="skill-fill" data-width="85"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info"><span>Terraform / Terragrunt</span><span>70%</span></div>
+                            <div class="skill-bar"><div class="skill-fill" data-width="70"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info"><span>Git Version Control</span><span>85%</span></div>
+                            <div class="skill-bar"><div class="skill-fill" data-width="85"></div></div>
+                        </div>
+                    </div>
+                    <div class="skill-category animate-on-scroll">
+                        <h3><i class="fas fa-shield-halved"></i> Security &amp; Compliance</h3>
+                        <div class="skill-item">
+                            <div class="skill-info"><span>Azure Defender / Security Center</span><span>80%</span></div>
+                            <div class="skill-bar"><div class="skill-fill" data-width="80"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info"><span>Azure Key Vault / RBAC / MFA</span><span>85%</span></div>
+                            <div class="skill-bar"><div class="skill-fill" data-width="85"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info"><span>Zero Trust / Conditional Access</span><span>80%</span></div>
+                            <div class="skill-bar"><div class="skill-fill" data-width="80"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info"><span>GDPR / SOC 2 / UK Gov Compliance</span><span>80%</span></div>
+                            <div class="skill-bar"><div class="skill-fill" data-width="80"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info"><span>Azure Policy / Governance</span><span>75%</span></div>
+                            <div class="skill-bar"><div class="skill-fill" data-width="75"></div></div>
+                        </div>
+                    </div>
+                    <div class="skill-category animate-on-scroll">
+                        <h3><i class="fas fa-terminal"></i> Scripting &amp; Tooling</h3>
+                        <div class="skill-item">
+                            <div class="skill-info"><span>PowerShell</span><span>85%</span></div>
+                            <div class="skill-bar"><div class="skill-fill" data-width="85"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info"><span>Bash / Shell Scripting</span><span>75%</span></div>
+                            <div class="skill-bar"><div class="skill-fill" data-width="75"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info"><span>Python</span><span>70%</span></div>
+                            <div class="skill-bar"><div class="skill-fill" data-width="70"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info"><span>Azure CLI / Az Module</span><span>85%</span></div>
+                            <div class="skill-bar"><div class="skill-fill" data-width="85"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info"><span>Helm / Helmfile</span><span>65%</span></div>
+                            <div class="skill-bar"><div class="skill-fill" data-width="65"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info"><span>HTML / CSS / JavaScript</span><span>90%</span></div>
+                            <div class="skill-bar"><div class="skill-fill" data-width="90"></div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education -->
+        <section id="education" class="section animate-on-scroll">
+            <div class="section-inner">
+                <h2 class="section-title"><i class="fas fa-graduation-cap"></i> Education</h2>
+                <div class="education-card">
+                    <div class="edu-icon"><i class="fas fa-graduation-cap"></i></div>
+                    <div class="edu-details">
+                        <h3>BA (Hons) 2.1 Business Management</h3>
+                        <p>University of East Anglia, Norwich, UK</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer id="footer">
+        <div class="footer-inner">
+            <div class="footer-links">
+                <a href="mailto:cloudresume.squire950@dralias.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/james-c-813a15255/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/jeimu3u" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://dev.to/jameschambers" target="_blank" aria-label="Dev.to"><i class="fab fa-dev"></i></a>
+            </div>
+            <div class="footer-info">
+                <p><i class="fab fa-microsoft"></i> Hosted in Azure &nbsp;|&nbsp; <i class="fab fa-github"></i> CI/CD via GitHub</p>
+            </div>
+            <div class="visitor-counter">
+                <span id="visitorCount"><i class="fas fa-eye"></i> Loading...</span>
+            </div>
+            <p class="footer-copy">&copy; <span id="currentYear"></span> James Chambers</p>
         </div>
+    </footer>
 
-        <div class="job">
-            <h3>Frontend Web Developer - Freelance</h3>
-            <p class="date">06/2010 - 02/2018: Remote</p>
-            <ul>
-                <li>Skilled in creating dynamic websites with HTML, CSS, JavaScript, PHP, and SQL, leveraging cloud-based technologies for scalability.</li>
-                <li>Proficient in key development tools and secure command-line operations.</li>
-                <li>Innovates user experiences through data-driven enhancement strategies.</li>
-                <li>Executed quality-driven projects rapidly, maintaining user experience standards.</li>
-                <li>Designed and analysed email campaigns, leveraging Google Analytics for optimisation.</li>
-            </ul>
-        </div>
-    </section>
-
-    <section class="technicalskills">
-        <h2>Technical Skills</h2>
-        <ul>
-            <li>Proficient in IaC with Bicep for Azure deployments.</li>
-            <li>Versatile version control with Git expertise.</li>
-            <li>Good scripting abilities in PowerShell and Bash.</li>
-            <li>Competent in Python for automation.</li>
-            <li>Experienced in Azure services and SecOps, ensuring secure, best-practice cloud architectures.</li>
-            <li>Proficient with Office 365 Suite, enhancing team productivity and collaboration.</li>
-            <li>Skilled in Windows, MacOS and Unix-based operating systems for optimal performance and security.</li>
-            <li>Experience in developing and delivering technical and soft skill training.</li>
-        </ul>
-    </section>
-
-    <section class="education">
-        <h2>Education</h2>
-        <p>BA (Hons) 2.1 Business Management, University of East Anglia, Norwich, UK</p>
-    </section>
-
-    <footer>
-        <p><i class="fas fa-cloud"></i>Hosted in the Azure cloud. <i class="fab fa-github"></i>CI/CD deployment via GitHub.</p>
-        <div><span id="visitorCount">Loading....</span></div>
-        <script src="script.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
-    </footer>    
-
+    <script src="script.js?v=2"></script>
 </body>
 </html>
