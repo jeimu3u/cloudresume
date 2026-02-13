@@ -677,7 +677,7 @@ body {
 
 .timeline-dot {
     position: absolute;
-    top: 50%;
+    top: calc(50% - 1.5rem);
     transform: translateY(-50%);
     width: 16px;
     height: 16px;
