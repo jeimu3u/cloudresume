@@ -4,6 +4,9 @@ functionapp/.venv/
 # Ignore the VSCode folder
 .vscode
 
+# Ignore claude folders
+designs/
+
 # Ignore temporary files
 .DS_Store
 *.swp
