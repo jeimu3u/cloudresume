@@ -52,7 +52,7 @@
 <main class="cv" id="cv">
   <section id="profile">
     <h2>Profile</h2>
-    <p>I am a Cloud DevOps engineer working on Azure and AWS. I joined Kortext, a higher education platform with three million users, as its only dedicated and specialist infrastructure engineer in August 2024. The estate ran, but it was managed by hand. I brought it under Terraform and Azure DevOps pipelines, designed the monitoring and on-call function, took cloud spend from £300k to £200k a month, and helped build the platform team of five that now runs it. I am currently working alongside Kortext's AI development team to build and support Kortext IQ, the company's newly launched AI assistant for higher education.</p>
+    <p>I am a Cloud DevOps engineer working on Azure and AWS. I joined Kortext, a higher education platform with three million users, as its only dedicated and specialist infrastructure engineer in August 2024. I brought the estate under Terraform and Azure DevOps pipelines, built out the monitoring and on-call function, cut cloud spend by a third, and helped build the platform team of five that now runs it. I am currently working alongside Kortext's AI development team to build and support Kortext IQ, the company's newly launched AI assistant for higher education.</p>
   </section>
 
   <section id="experience">
@@ -63,12 +63,12 @@
       <h3>Cloud DevOps Engineer, Kortext</h3>
       <p class="org">Digital learning platform for higher education. 3M+ users, around ten products.</p>
       <ul class="led">
-        <li><b>Kortext Investigation Agent.</b> Built a Claude-based application that triggers on P1 alerts and delivers a written investigation with candidate causes within five minutes, before the on-call engineer has reached a device. It has read-only access to Datadog, Azure, Kubernetes, AWS and PagerDuty, and is hosted outside Kubernetes so it still works when Kubernetes is what has failed.</li>
-        <li><b>Cloud cost.</b> Took spend from £300k to £200k a month, £1.2M a year, on a baseline that had been flat across the academic year, so the saving is engineering rather than seasonal. Cost visibility by owner and product for senior leadership, right-sizing from utilisation data rather than guesswork, VMSS and KEDA autoscaling for an estate that had been sized for peak all year, and reservations committed only after all of that.</li>
+        <li><b>AI incident investigation agent.</b> Built a Claude-based application that triggers on P1 alerts and delivers a written investigation with candidate causes within five minutes, before the on-call engineer has reached a device. It reads from the monitoring, cloud and alerting platforms and is deliberately hosted apart from the estate it investigates.</li>
+        <li><b>Cloud cost.</b> Cut monthly cloud spend by a third, on a baseline that had been flat across the academic year, so the saving is engineering rather than seasonal. Cost visibility by owner and product for senior leadership, right-sizing from utilisation data rather than guesswork, VMSS and KEDA autoscaling for an estate that had been sized for peak all year, and reservations committed only after all of that.</li>
         <li><b>AWS to Azure migration.</b> Moved acquired Java and MySQL applications from AWS to Azure with about 30 seconds of write downtime, using binlog replication and GTID-verified cutover, and consolidated per-client RDS clusters onto Azure MySQL Flexible Server with namespace isolation per client. Compute cost down 20%, database cost down 35%.</li>
         <li><b>Kortext IQ platform.</b> Own the platform under Kortext IQ with the AI development team: Application Gateway ingress, observability across six environments and two production regions, and a load-test pipeline exercising chat at up to 1,000 virtual users. R&amp;D wrote the retrieval and agent code; I built what it runs on.</li>
-        <li><b>Delivery.</b> Brought a hand-managed estate under Terraform and ArgoCD, introduced the first Azure DevOps CI/CD pipelines, and designed the monitoring and on-call function on Datadog and PagerDuty. Deploying Stream, an acquired analytics product, went from three weeks of manual work to a 20-minute pipeline run.</li>
-        <li><b>Security and network.</b> Took Kubernetes and SQL Managed Instance off the public internet, with access through Azure Virtual Desktop and Application Gateway, and put privileged access behind PIM. Moved the storefront from Traffic Manager to Front Door Premium, which took the origin off the internet and ended a persistent DDoS problem, with WAF rate limiting for the Layer 7 flood.</li>
+        <li><b>Delivery.</b> Brought the estate under Terraform and ArgoCD with Azure DevOps CI/CD pipelines, and built out the monitoring and on-call function on Datadog and PagerDuty. Turned a multi-week manual deployment of an acquired product into a 20-minute pipeline run.</li>
+        <li><b>Security and network.</b> Removed public endpoints from Kubernetes and SQL Managed Instance and moved privileged access behind PIM. Hardened the public edge by moving the storefront from Traffic Manager to Front Door Premium with WAF, taking the origin off the public internet.</li>
       </ul>
     </article>
 
@@ -99,8 +99,8 @@
   <section id="thinking" class="think">
     <h2>How I think</h2>
     <p>On cost, the order matters: visibility, then right-sizing, then scaling, then reservations. Tag everything and put the spend in front of the people who own it. Size from utilisation data, add autoscaling so the estate follows demand, and only then commit to reserved capacity. Reservations are the step most people take first, and it locks in whatever is oversized.</p>
-    <p>On incidents, the first fifteen minutes are usually dead time while the on-call engineer finds a laptop and orients themselves. I built an agent that uses that window, so the engineer starts with a written investigation and candidate causes rather than a blank dashboard. It runs outside Kubernetes on purpose, so it still works when Kubernetes is the thing that has failed.</p>
-    <p>On the edge, the storefront sat behind Traffic Manager, which routes at the DNS layer and leaves the origin publicly addressable, so it was being hit directly. Front Door Premium terminates at the edge and takes the origin off the public internet, with WAF rate limiting for the Layer 7 flood.</p>
+    <p>On incidents, the first fifteen minutes are usually dead time while the on-call engineer finds a laptop and orients themselves. I built an agent that uses that window, so the engineer starts with a written investigation and candidate causes rather than a blank dashboard. It runs apart from the estate it investigates on purpose, so it still works when that estate is the thing that has failed.</p>
+    <p>On the edge, DNS-layer routing such as Traffic Manager leaves the origin publicly addressable, so anyone who resolves the name can hit it directly. A Layer 7 edge such as Front Door Premium terminates traffic before it reaches the origin, takes the origin off the public internet, and gives you a WAF to act on what it sees.</p>
   </section>
 
   <section id="skills" class="skills">
