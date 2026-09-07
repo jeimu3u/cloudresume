@@ -74,10 +74,10 @@ ul{margin:0;padding:0;list-style:none}
 .role li,.skills dd{text-align:justify}
 .list li{text-align:center}
 .meta{font-family:var(--mono);font-size:13.5px;line-height:1.7;color:var(--ink-3);margin:0 0 6px}
-.role .meta{text-align:center;margin:8px 0 2px}
+.role .meta{text-align:center;margin:8px 0 0}
 .role{margin-bottom:52px}
 .role h3{font-size:26px;line-height:1.2;letter-spacing:-0.01em;text-align:center}
-.role .org{color:var(--ink-3);font-size:17px;margin:2px 0 18px;font-style:italic;text-align:center}
+.role .org{color:var(--ink-3);font-size:17px;margin:18px 0 18px;font-style:italic;text-align:justify}
 .role ul{margin-top:8px}
 .role li{position:relative;padding-left:22px;margin-bottom:12px;color:var(--ink-2)}
 .role li::before{content:"";position:absolute;left:0;top:.72em;width:10px;height:1px;background:var(--ink)}
@@ -102,7 +102,7 @@ ul{margin:0;padding:0;list-style:none}
   .cv section{margin-bottom:64px}
   .cv h2{font-size:29px}
   .role h3{font-size:23px}
-  .cv p,.role li,.skills dd{text-align:left}
+  .cv p,.role li,.skills dd,.role .org{text-align:left}
   .skills dl{grid-template-columns:1fr;gap:4px}
   .skills dd{margin-bottom:12px}
 }
