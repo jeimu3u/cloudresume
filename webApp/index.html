@@ -59,7 +59,7 @@
     <h2>How I think</h2>
     <p>On cost, I do things in a fixed order: visibility, right-sizing, scaling, then reservations. Tag everything and put the spend in front of the people who own it. Size from utilisation data. Add autoscaling so the estate follows demand. Only then commit to reserved capacity. Most people buy reservations first, which locks in whatever was already oversized.</p>
     <p>On incidents, the first fifteen minutes are mostly dead time while the on-call engineer finds a laptop and gets their bearings. I built an agent to use that window. By the time they are in, there is a written investigation with candidate causes waiting for them instead of an empty dashboard. It deliberately runs away from the estate it investigates, so it still works when that estate is what has broken.</p>
-    <p>On the edge, DNS-layer routing like Traffic Manager leaves the origin publicly addressable. Anyone who resolves the name can hit it directly. A Layer 7 edge like Front Door Premium terminates traffic before it reaches the origin, takes the origin off the public internet, and puts a WAF in the path.</p>
+    <p>On ingress, my instinct is to reduce the number of ways in. Kubernetes will happily give every service its own public load balancer, and DNS-layer routing only hands out an address, so the origin stays reachable by anyone who resolves the name. I would rather have one Layer 7 entry point that traffic has to pass through, on Application Gateway with AGIC. That gives you one place to terminate TLS, apply a WAF and rate limits, and see what is actually arriving, with far fewer public addresses to defend. Security and control are worth the extra hop.</p>
   </section>
 
   <section id="experience">
