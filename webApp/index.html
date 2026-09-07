@@ -55,6 +55,13 @@
     <p>I am a Cloud DevOps engineer working on Azure and AWS. I joined Kortext, a higher education platform with three million users, as its only dedicated and specialist infrastructure engineer in August 2024. I brought the estate under Terraform and Azure DevOps pipelines, built out the monitoring and on-call function, cut cloud spend by a third, and helped build the platform team of five that now runs it. I am currently working alongside Kortext's AI development team to build and support Kortext IQ, the company's newly launched AI assistant for higher education.</p>
   </section>
 
+  <section id="thinking" class="think">
+    <h2>How I think</h2>
+    <p>On cost, I do things in a fixed order: visibility, right-sizing, scaling, then reservations. Tag everything and put the spend in front of the people who own it. Size from utilisation data. Add autoscaling so the estate follows demand. Only then commit to reserved capacity. Most people buy reservations first, which locks in whatever was already oversized.</p>
+    <p>On incidents, the first fifteen minutes are mostly dead time while the on-call engineer finds a laptop and gets their bearings. I built an agent to use that window. By the time they are in, there is a written investigation with candidate causes waiting for them instead of an empty dashboard. It deliberately runs away from the estate it investigates, so it still works when that estate is what has broken.</p>
+    <p>On the edge, DNS-layer routing like Traffic Manager leaves the origin publicly addressable. Anyone who resolves the name can hit it directly. A Layer 7 edge like Front Door Premium terminates traffic before it reaches the origin, takes the origin off the public internet, and puts a WAF in the path.</p>
+  </section>
+
   <section id="experience">
     <h2>Experience</h2>
 
@@ -66,7 +73,7 @@
         <li><b>AI incident investigation agent.</b> A Claude-based application that picks up PagerDuty incidents on the platform team's services, investigates, and posts ranked hypotheses with evidence back to the incident. Findings land in around five minutes, while the on-call engineer is still getting set up. It reads from the monitoring, cloud, cluster and change-history tooling, has no write tools, and runs outside the Kubernetes estate so it keeps working when Kubernetes is the thing that is down.</li>
         <li><b>Cloud cost.</b> Cut monthly cloud spend by a third. The baseline had been flat across the whole academic year, so the drop came from engineering, not the calendar. Cost visibility by owner and product for senior leadership, right-sizing from real utilisation data, VMSS and KEDA autoscaling for an estate that had been sized for peak all year round, and reservations only once all of that was done.</li>
         <li><b>AWS to Azure migration.</b> Moved acquired Java and MySQL applications from AWS to Azure with about 30 seconds of write downtime, using binlog replication and a GTID check before cutover. Consolidated per-client RDS clusters onto Azure MySQL Flexible Server, with a namespace per client. Compute cost down 20%, database cost down 35%.</li>
-        <li><b>Kortext IQ platform.</b> I run the platform under Kortext IQ with the AI development team: Application Gateway ingress, observability across six environments and two production regions, and a load-test pipeline that exercises chat at up to 1,000 virtual users. R&amp;D wrote the retrieval and agent code. I built the platform it runs on.</li>
+        <li><b>Kortext IQ platform.</b> I run the platform under Kortext IQ with the AI development team: Application Gateway ingress, observability across six environments and two production regions, and a load-test pipeline for the chat service. R&amp;D wrote the retrieval and agent code. I built the platform it runs on.</li>
         <li><b>Delivery.</b> Brought the estate under Terraform and ArgoCD with Azure DevOps CI/CD pipelines, and built out monitoring and on-call on Datadog and PagerDuty. A deployment of an acquired product that used to take weeks of manual work now runs as a 20-minute pipeline.</li>
         <li><b>Security and network.</b> Tightened network exposure and privileged access across the estate: private endpoints, just-in-time privileged access through PIM, and a WAF-fronted edge on Front Door Premium.</li>
       </ul>
@@ -94,13 +101,6 @@
         <li>As a Special Constable, served 40 hours a month against a 20-hour commitment for nearly three years while working full time in cloud roles. Recognised with a volunteering award.</li>
       </ul>
     </article>
-  </section>
-
-  <section id="thinking" class="think">
-    <h2>How I think</h2>
-    <p>On cost, I do things in a fixed order: visibility, right-sizing, scaling, then reservations. Tag everything and put the spend in front of the people who own it. Size from utilisation data. Add autoscaling so the estate follows demand. Only then commit to reserved capacity. Most people buy reservations first, which locks in whatever was already oversized.</p>
-    <p>On incidents, the first fifteen minutes are mostly dead time while the on-call engineer finds a laptop and gets their bearings. I built an agent to use that window. By the time they are in, there is a written investigation with candidate causes waiting for them instead of an empty dashboard. It deliberately runs away from the estate it investigates, so it still works when that estate is what has broken.</p>
-    <p>On the edge, DNS-layer routing like Traffic Manager leaves the origin publicly addressable. Anyone who resolves the name can hit it directly. A Layer 7 edge like Front Door Premium terminates traffic before it reaches the origin, takes the origin off the public internet, and puts a WAF in the path.</p>
   </section>
 
   <section id="skills" class="skills">
