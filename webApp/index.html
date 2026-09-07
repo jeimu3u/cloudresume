@@ -68,7 +68,7 @@
         <li><b>AWS to Azure migration.</b> Moved acquired Java and MySQL applications from AWS to Azure with about 30 seconds of write downtime, using binlog replication and a GTID check before cutover. Consolidated per-client RDS clusters onto Azure MySQL Flexible Server, with a namespace per client. Compute cost down 20%, database cost down 35%.</li>
         <li><b>Kortext IQ platform.</b> I run the platform under Kortext IQ with the AI development team: Application Gateway ingress, observability across six environments and two production regions, and a load-test pipeline that exercises chat at up to 1,000 virtual users. R&amp;D wrote the retrieval and agent code. I built the platform it runs on.</li>
         <li><b>Delivery.</b> Brought the estate under Terraform and ArgoCD with Azure DevOps CI/CD pipelines, and built out monitoring and on-call on Datadog and PagerDuty. A deployment of an acquired product that used to take weeks of manual work now runs as a 20-minute pipeline.</li>
-        <li><b>Security and network.</b> Removed public endpoints from Kubernetes and SQL Managed Instance and put privileged access behind PIM. Moved the storefront from Traffic Manager to Front Door Premium with WAF, which took the origin off the public internet.</li>
+        <li><b>Security and network.</b> Tightened network exposure and privileged access across the estate: private endpoints, just-in-time privileged access through PIM, and a WAF-fronted edge on Front Door Premium.</li>
       </ul>
     </article>
 
