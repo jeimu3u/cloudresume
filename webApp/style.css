@@ -113,10 +113,10 @@ ul{margin:0;padding:0;list-style:none}
 .certs .when{flex:none;font-family:var(--mono);font-size:12.5px;color:var(--ink-3)}
 .list li{margin-bottom:14px;color:var(--ink-2)}
 .list li .meta{display:block;margin:0}
-.cv footer{font-family:var(--mono);font-size:13px;color:var(--ink-3);line-height:1.8;border-top:1px solid var(--rule);padding-top:22px}
+.cv footer{font-family:var(--mono);font-size:13px;color:var(--ink-3);line-height:1.8;border-top:1px solid var(--rule);padding-top:22px;text-align:center}
 .cv footer a{color:var(--ink-3)}
 .cv footer a:hover{color:var(--ink)}
-.cv footer .row{display:flex;flex-wrap:wrap;gap:6px 24px;margin-bottom:6px}
+.cv footer .row{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 24px;margin-bottom:6px}
 
 @media (max-width:640px){
   .landing{padding:24px 18px 96px}
