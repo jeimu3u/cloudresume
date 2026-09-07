@@ -53,6 +53,16 @@ ul{margin:0;padding:0;list-style:none}
 .landing .icon{position:relative;display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;background:var(--ink);color:#fff;text-decoration:none;transition:transform .25s cubic-bezier(.2,.7,.2,1),background-color .25s ease,box-shadow .35s ease;box-shadow:0 0 0 0 rgba(31,63,184,0)}
 .landing .icon svg{width:20px;height:20px;fill:currentColor}
 .landing .icon:hover,.landing .icon:focus-visible{background:var(--link);transform:translateY(-3px) scale(1.06);box-shadow:0 10px 30px rgba(31,63,184,.35),0 0 0 8px rgba(31,63,184,.10)}
+.landing .icon::after{content:attr(data-tip);position:absolute;top:calc(100% + 14px);left:50%;transform:translate(-50%,-5px);background:#fff;color:var(--ink);font-family:var(--mono);font-size:12.5px;line-height:1;padding:9px 13px;border-radius:10px;white-space:nowrap;box-shadow:0 8px 26px rgba(20,30,60,.18),0 1px 2px rgba(20,30,60,.10);opacity:0;pointer-events:none;transition:opacity .22s ease,transform .22s cubic-bezier(.2,.7,.2,1)}
+.landing .icon::before{content:"";position:absolute;top:calc(100% + 9px);left:50%;transform:translate(-50%,-5px) rotate(45deg);width:10px;height:10px;background:#fff;border-radius:2px;opacity:0;pointer-events:none;transition:opacity .22s ease,transform .22s cubic-bezier(.2,.7,.2,1)}
+.landing .icon:focus-visible{z-index:2}
+.landing .icon:focus-visible::after{opacity:1;transform:translate(-50%,0)}
+.landing .icon:focus-visible::before{opacity:1;transform:translate(-50%,0) rotate(45deg)}
+@media (hover:hover){
+  .landing .icon:hover{z-index:2}
+  .landing .icon:hover::after{opacity:1;transform:translate(-50%,0)}
+  .landing .icon:hover::before{opacity:1;transform:translate(-50%,0) rotate(45deg)}
+}
 .bubble{position:absolute;left:50%;bottom:26px;transform:translateX(-50%);width:48px;height:48px;border-radius:50%;background:#fff;color:var(--ink);display:inline-flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 6px 20px rgba(20,30,60,.14),0 1px 2px rgba(20,30,60,.10);animation:bob 2.6s ease-in-out infinite}
 .bubble svg{width:22px;height:22px}
 .bubble{transition:box-shadow .35s ease,color .2s ease}
@@ -61,7 +71,7 @@ ul{margin:0;padding:0;list-style:none}
 .bubble{opacity:1;animation:bob 2.6s ease-in-out 1.7s infinite}
 .bubble.enter{opacity:0;animation:rise-b .9s cubic-bezier(.2,.7,.2,1) .8s forwards,bob 2.6s ease-in-out 1.7s infinite}
 @keyframes rise-b{from{opacity:0;transform:translate(-50%,14px)}to{opacity:1;transform:translate(-50%,0)}}
-@media (prefers-reduced-motion: reduce){.glow,.glow span,.bubble,.bubble.enter,.landing .centre>*,.landing .foot{animation:none;opacity:1}.landing .icon,.bubble,.landing h1{transition:none}}
+@media (prefers-reduced-motion: reduce){.glow,.glow span,.bubble,.bubble.enter,.landing .centre>*,.landing .foot{animation:none;opacity:1}.landing .icon,.bubble,.landing h1{transition:none}.landing .icon::after,.landing .icon::before{transition:none}}
 .landing .foot{grid-row:3;align-self:end;padding-bottom:0;font-family:var(--mono);font-size:12.5px;line-height:1.7;color:var(--ink-2);max-width:44em}
 .landing .foot p{margin:0}
 .landing .foot a{color:var(--ink-2);text-decoration-color:rgba(0,0,0,.3)}
