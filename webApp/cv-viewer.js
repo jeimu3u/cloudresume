@@ -8,6 +8,7 @@ const ZOOM_STEP = 1.25;
 
 const viewer = document.getElementById('cv-viewer');
 const panel = viewer && viewer.querySelector('.viewer-panel');
+const bar = viewer && viewer.querySelector('.viewer-bar');
 const stage = viewer && viewer.querySelector('.viewer-stage');
 const doc = viewer && viewer.querySelector('.viewer-doc');
 const status = viewer && viewer.querySelector('.viewer-status');
@@ -142,6 +143,7 @@ async function load() {
 function useNative() {
   native = true;
   viewer.classList.add('is-native');
+  applySize();
   doc.textContent = '';
   const frame = document.createElement('iframe');
   frame.className = 'viewer-frame';
@@ -153,13 +155,62 @@ function useNative() {
 
 /* ---------- rendering ---------- */
 
+/* The room a panel has, and the size it sits at before any zooming.
+   Measured from the window, not from the panel, so growing the panel
+   cannot feed back into the scale the page is fitted at. */
+function box() {
+  const cs = getComputedStyle(viewer);
+  const availW = viewer.clientWidth - (parseFloat(cs.paddingLeft) || 0) * 2;
+  const availH = viewer.clientHeight - (parseFloat(cs.paddingTop) || 0) * 2;
+  const baseW = parseFloat(cs.getPropertyValue('--panel-base-w')) || availW;
+  const baseH = parseFloat(cs.getPropertyValue('--panel-base-h')) || availH;
+  return {
+    availW: availW,
+    availH: availH,
+    w: Math.min(baseW, availW),
+    h: Math.min(baseH, availH),
+    pad: parseFloat(getComputedStyle(stage).paddingLeft) || 0,
+    bar: bar.offsetHeight
+  };
+}
+
 function fitScale() {
   if (!pages.length) return 1;
   const view = pages[0].proxy.getViewport({ scale: 1 });
-  const pad = 56;
-  const w = Math.max(120, stage.clientWidth - pad);
-  const h = Math.max(120, stage.clientHeight - pad);
+  const b = box();
+  const w = Math.max(120, b.w - b.pad * 2 - 4);
+  const h = Math.max(120, b.h - b.bar - b.pad * 2 - 4);
   return Math.max(0.1, Math.min(w / view.width, h / view.height));
+}
+
+/* Zooming widens the panel into any space the window has going spare.
+   Scrollbars only turn up once it has run out of room. */
+function applySize() {
+  if (native || !pages.length) {
+    panel.style.removeProperty('--panel-w');
+    panel.style.removeProperty('--panel-h');
+    return;
+  }
+  const b = box();
+  const gap = parseFloat(getComputedStyle(doc).rowGap) || 0;
+  let cw = 0;
+  let ch = gap * (pages.length - 1);
+  pages.forEach(function (p) {
+    cw = Math.max(cw, parseFloat(p.canvas.style.width) || 0);
+    ch += parseFloat(p.canvas.style.height) || 0;
+  });
+
+  const w = Math.min(b.availW, Math.max(b.w, cw + b.pad * 2));
+  const h = Math.min(b.availH, Math.max(b.h, ch + b.pad * 2 + b.bar));
+  panel.style.setProperty('--panel-w', Math.round(w) + 'px');
+  panel.style.setProperty('--panel-h', Math.round(h) + 'px');
+
+  /* Where scrollbars take up room, hand the panel that room back, so a
+     vertical bar cannot be what brings on a horizontal one. */
+  const bars = stage.offsetWidth - stage.clientWidth;
+  if (bars > 0) {
+    panel.style.setProperty('--panel-w', Math.round(Math.min(b.availW, w + bars)) + 'px');
+  }
 }
 
 async function render() {
@@ -172,16 +223,23 @@ async function render() {
     if (p.task) { p.task.cancel(); p.task = null; }
   });
 
-  for (const p of pages) {
-    if (seq !== renderSeq) return;
+  const jobs = pages.map(function (p) {
     const css = p.proxy.getViewport({ scale: scale });
     const bitmap = p.proxy.getViewport({ scale: scale * dpr });
     p.canvas.width = Math.floor(bitmap.width);
     p.canvas.height = Math.floor(bitmap.height);
     p.canvas.style.width = Math.floor(css.width) + 'px';
     p.canvas.style.height = Math.floor(css.height) + 'px';
+    return { page: p, viewport: bitmap };
+  });
+
+  applySize();
+
+  for (const job of jobs) {
+    if (seq !== renderSeq) return;
+    const p = job.page;
     try {
-      p.task = p.proxy.render({ canvas: p.canvas, viewport: bitmap });
+      p.task = p.proxy.render({ canvas: p.canvas, viewport: job.viewport });
       await p.task.promise;
       p.task = null;
     } catch (err) {
