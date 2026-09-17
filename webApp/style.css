@@ -194,6 +194,8 @@ ul{margin:0;padding:0;list-style:none}
 .viewer-btn:hover,.viewer-level:hover,.viewer-btn:focus-visible,.viewer-level:focus-visible{z-index:2}
 
 .viewer-stage{position:relative;flex:1;min-height:0;overflow:auto;display:flex;align-items:safe center;justify-content:safe center;padding:26px;background:#F6F7F9;overscroll-behavior:contain}
+.viewer-stage{scrollbar-width:none;-ms-overflow-style:none}
+.viewer-stage::-webkit-scrollbar{width:0;height:0;display:none}
 .viewer-stage.is-zoomed{cursor:grab}
 .viewer-stage.is-panning{cursor:grabbing}
 .viewer-doc{display:flex;flex-direction:column;gap:18px}
