@@ -39,7 +39,7 @@
     <nav class="links" aria-label="Contact">
       <a class="icon" href="https://www.linkedin.com/in/jameschambers-devops/" aria-label="LinkedIn" data-tip="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.94 8.5H3.56V20h3.38V8.5zM5.25 3.5a1.97 1.97 0 1 0 0 3.94 1.97 1.97 0 0 0 0-3.94zM20.44 20h-3.37v-5.6c0-1.34-.03-3.06-1.87-3.06-1.87 0-2.15 1.46-2.15 2.96V20H9.68V8.5h3.23v1.57h.05c.45-.85 1.55-1.75 3.19-1.75 3.41 0 4.04 2.25 4.04 5.17V20z"/></svg></a>
       <a class="icon" href="mailto:mail@jameschambers.me.uk" aria-label="Email James" data-tip="Email me"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 6.5A2 2 0 0 1 5.5 4.5h13a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2h-13a2 2 0 0 1-2-2v-11zm2-.25 6.5 5.2 6.5-5.2v-.25h-13v.25zm13 2.15-6.5 5.2-6.5-5.2v9.1h13v-9.1z"/></svg></a>
-      <a class="icon" href="/james-chambers-cv.pdf" download="James Chambers CV.pdf" aria-label="Download CV as PDF" data-tip="Download CV"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V9l-6-6zm0 2.5L16.5 9H13V5.5zM8.5 13h7v1.6h-7V13zm0 3.2h7v1.6h-7v-1.6z"/></svg></a>
+      <a class="icon" href="/james-chambers-cv.pdf" data-cv-open aria-label="View CV" data-tip="View CV"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V9l-6-6zm0 2.5L16.5 9H13V5.5zM8.5 13h7v1.6h-7V13zm0 3.2h7v1.6h-7v-1.6z"/></svg></a>
       <a class="print-only" href="mailto:mail@jameschambers.me.uk">mail@jameschambers.me.uk</a>
     </nav>
   </div>
@@ -142,12 +142,35 @@
     <div class="row">
       <a href="https://www.linkedin.com/in/jameschambers-devops/">LinkedIn</a>
       <a href="mailto:mail@jameschambers.me.uk">Get in touch</a>
-      <a href="/james-chambers-cv.pdf" download="James Chambers CV.pdf">CV (PDF)</a>
+      <a href="/james-chambers-cv.pdf" data-cv-open>View CV</a>
       <a href="#top" onclick="window.scrollTo({top:0});return false;">Back to top</a>
     </div>
     <div>Hosted on Azure Static Web Apps, deployed by GitHub Actions.</div>
   </footer>
 </main>
 
+<div class="viewer" id="cv-viewer" hidden>
+  <div class="viewer-scrim" data-cv-close aria-hidden="true"></div>
+  <div class="viewer-panel" role="dialog" aria-modal="true" aria-labelledby="viewer-title">
+    <div class="viewer-bar">
+      <h2 id="viewer-title">James Chambers CV</h2>
+      <div class="viewer-tools">
+        <div class="viewer-zoom">
+          <button type="button" class="viewer-btn" data-zoom="out" aria-label="Zoom out" data-tip="Zoom out"><svg viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.4 15.4 20.5 20.5"/><path d="M7.7 10.5h5.6"/></g></svg></button>
+          <button type="button" class="viewer-level" data-zoom="fit" aria-label="Fit the page to the window" data-tip="Fit to window">100%</button>
+          <button type="button" class="viewer-btn" data-zoom="in" aria-label="Zoom in" data-tip="Zoom in"><svg viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.4 15.4 20.5 20.5"/><path d="M7.7 10.5h5.6M10.5 7.7v5.6"/></g></svg></button>
+        </div>
+        <a class="viewer-btn" href="/james-chambers-cv.pdf" download="James Chambers CV.pdf" aria-label="Download the CV as a PDF" data-tip="Download"><svg viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.8v10.4"/><path d="M7.8 10 12 14.2 16.2 10"/><path d="M4.8 19.2h14.4"/></g></svg></a>
+        <button type="button" class="viewer-btn viewer-close" data-cv-close aria-label="Close the CV" data-tip="Close"><svg viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6.8 6.8 17.2 17.2M17.2 6.8 6.8 17.2"/></g></svg></button>
+      </div>
+    </div>
+    <div class="viewer-stage">
+      <div class="viewer-doc"></div>
+      <p class="viewer-status">Loading the CV</p>
+    </div>
+  </div>
+</div>
+
+<script type="module" src="cv-viewer.js"></script>
 </body>
 </html>
