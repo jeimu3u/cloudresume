@@ -24,6 +24,9 @@ let renderSeq = 0;
 let started = false;
 let native = false;
 let lastFocus = null;
+let gesturing = false;
+let gestureTimer = 0;
+let holdSeq = 0;
 
 if (viewer) wire();
 
@@ -88,7 +91,7 @@ function open() {
 function close() {
   if (viewer.hidden) return;
   viewer.classList.remove('is-open');
-  viewer.classList.remove('is-fluid');
+  viewer.classList.remove('is-eased');
   panel.style.removeProperty('--panel-w');
   panel.style.removeProperty('--panel-h');
   document.body.classList.remove('viewer-open');
@@ -237,7 +240,7 @@ function fitScale() {
    Scrollbars only turn up once it has run out of room. */
 function applySize() {
   if (native || !pages.length) {
-    viewer.classList.remove('is-fluid');
+    viewer.classList.remove('is-eased');
     panel.style.removeProperty('--panel-w');
     panel.style.removeProperty('--panel-h');
     return;
@@ -256,11 +259,9 @@ function applySize() {
   panel.style.setProperty('--panel-w', Math.round(w) + 'px');
   panel.style.setProperty('--panel-h', Math.round(h) + 'px');
 
-  /* Panel and page are eased to their new size together, which only looks
-     right while the panel still holds the whole page. Once it is capped and
-     the page spills over, the size is taken on the spot instead, so the
-     scroll position stays true to where the zoom was aimed. */
-  viewer.classList.toggle('is-fluid', w >= cw + b.pad * 2 && h >= ch + b.pad * 2 + b.bar);
+  /* Panel and page ease to their new size together, so a zoom step reads as
+     one movement rather than a jump. */
+  viewer.classList.toggle('is-eased', !gesturing);
 
   /* Where scrollbars take up room, hand the panel that room back, so a
      vertical bar cannot be what brings on a horizontal one. */
@@ -328,8 +329,33 @@ function setZoom(next, anchor) {
 
   zoom = target;
   render();
-  stage.scrollLeft = left;
-  stage.scrollTop = top;
+  holdScroll(left, top);
+}
+
+/* While the page eases to its new size the scrollable area is still growing,
+   so where the zoom was aimed has to be re-applied until it settles. */
+function holdScroll(left, top) {
+  const id = ++holdSeq;
+  const until = performance.now() + (viewer.classList.contains('is-eased') ? 300 : 0);
+  (function step() {
+    if (id !== holdSeq) return;
+    stage.scrollLeft = left;
+    stage.scrollTop = top;
+    if (performance.now() < until) requestAnimationFrame(step);
+  })();
+}
+
+/* Pinching and wheel zooming send a stream of small steps. Easing each one
+   would leave the page trailing behind the fingers, so it tracks them
+   directly and picks the easing back up once they stop. */
+function gesture() {
+  gesturing = true;
+  viewer.classList.remove('is-eased');
+  clearTimeout(gestureTimer);
+  gestureTimer = window.setTimeout(function () {
+    gesturing = false;
+    if (!native && pages.length) viewer.classList.add('is-eased');
+  }, 180);
 }
 
 function updateControls() {
@@ -343,6 +369,7 @@ function onWheel(e) {
   if (native) return;
   if (!e.ctrlKey && !e.metaKey) return;
   e.preventDefault();
+  gesture();
   setZoom(zoom * (e.deltaY < 0 ? 1.12 : 1 / 1.12), { x: e.clientX, y: e.clientY });
 }
 
@@ -358,6 +385,7 @@ function addPinch() {
   stage.addEventListener('touchmove', function (e) {
     if (native || e.touches.length !== 2 || !start) return;
     e.preventDefault();
+    gesture();
     const mid = {
       x: (e.touches[0].clientX + e.touches[1].clientX) / 2,
       y: (e.touches[0].clientY + e.touches[1].clientY) / 2
