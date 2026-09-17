@@ -78,10 +78,9 @@ function open() {
     requestAnimationFrame(function () {
       zoom = 1;
       baseScale = fitScale();
-      render().then(function () {
-        stage.scrollTop = 0;
-        stage.scrollLeft = 0;
-      });
+      render();
+      stage.scrollTop = 0;
+      stage.scrollLeft = 0;
     });
   }
 }
@@ -89,6 +88,9 @@ function open() {
 function close() {
   if (viewer.hidden) return;
   viewer.classList.remove('is-open');
+  viewer.classList.remove('is-fluid');
+  panel.style.removeProperty('--panel-w');
+  panel.style.removeProperty('--panel-h');
   document.body.classList.remove('viewer-open');
   window.setTimeout(function () { viewer.hidden = true; }, motionOK() ? 220 : 0);
   if (lastFocus && lastFocus.focus) lastFocus.focus();
@@ -125,9 +127,13 @@ async function load() {
     const pdf = await lib.getDocument({ url: PDF_URL }).promise;
     for (let n = 1; n <= pdf.numPages; n++) {
       const proxy = await pdf.getPage(n);
+      const sheet = document.createElement('div');
+      sheet.className = 'viewer-sheet';
       const canvas = document.createElement('canvas');
       canvas.className = 'viewer-page';
-      doc.appendChild(canvas);
+      sheet.appendChild(canvas);
+      sheet.appendChild(await linkLayer(proxy));
+      doc.appendChild(sheet);
       pages.push({ proxy: proxy, canvas: canvas, task: null });
     }
     baseScale = fitScale();
@@ -136,6 +142,50 @@ async function load() {
     stage.tabIndex = 0;
   } catch (err) {
     useNative();
+  }
+}
+
+/* ---------- links ---------- */
+
+/* The email address, phone number and web links are real annotations in the
+   PDF. Canvas alone throws them away, so lay an anchor over each one. The
+   boxes are placed in percentages, which keeps them on the words as the page
+   is zoomed, with no per-frame work. */
+async function linkLayer(proxy) {
+  const layer = document.createElement('div');
+  layer.className = 'viewer-links';
+  const view = proxy.getViewport({ scale: 1 });
+  const annots = await proxy.getAnnotations({ intent: 'display' });
+
+  annots.forEach(function (a) {
+    if (a.subtype !== 'Link' || !a.url) return;
+    const r = view.convertToViewportRectangle(a.rect);
+    const link = document.createElement('a');
+    link.className = 'viewer-link';
+    link.href = a.url;
+    link.rel = 'noopener noreferrer';
+    if (/^https?:/i.test(a.url)) link.target = '_blank';
+    link.setAttribute('aria-label', label(a.url));
+    link.style.left = pct(Math.min(r[0], r[2]), view.width);
+    link.style.top = pct(Math.min(r[1], r[3]), view.height);
+    link.style.width = pct(Math.abs(r[2] - r[0]), view.width);
+    link.style.height = pct(Math.abs(r[3] - r[1]), view.height);
+    layer.appendChild(link);
+  });
+  return layer;
+}
+
+function pct(part, whole) {
+  return (part / whole * 100).toFixed(4) + '%';
+}
+
+function label(url) {
+  if (url.indexOf('mailto:') === 0) return 'Email ' + url.slice(7);
+  if (url.indexOf('tel:') === 0) return 'Call ' + url.slice(4);
+  try {
+    return 'Open ' + new URL(url).hostname.replace(/^www\./, '');
+  } catch (err) {
+    return 'Open link';
   }
 }
 
@@ -187,6 +237,7 @@ function fitScale() {
    Scrollbars only turn up once it has run out of room. */
 function applySize() {
   if (native || !pages.length) {
+    viewer.classList.remove('is-fluid');
     panel.style.removeProperty('--panel-w');
     panel.style.removeProperty('--panel-h');
     return;
@@ -204,6 +255,12 @@ function applySize() {
   const h = Math.min(b.availH, Math.max(b.h, ch + b.pad * 2 + b.bar));
   panel.style.setProperty('--panel-w', Math.round(w) + 'px');
   panel.style.setProperty('--panel-h', Math.round(h) + 'px');
+
+  /* Panel and page are eased to their new size together, which only looks
+     right while the panel still holds the whole page. Once it is capped and
+     the page spills over, the size is taken on the spot instead, so the
+     scroll position stays true to where the zoom was aimed. */
+  viewer.classList.toggle('is-fluid', w >= cw + b.pad * 2 && h >= ch + b.pad * 2 + b.bar);
 
   /* Where scrollbars take up room, hand the panel that room back, so a
      vertical bar cannot be what brings on a horizontal one. */
@@ -223,14 +280,13 @@ async function render() {
     if (p.task) { p.task.cancel(); p.task = null; }
   });
 
+  /* Lay the new size out before drawing anything. The pixels already on
+     screen stretch to fill it, so the page is never blank mid-zoom. */
   const jobs = pages.map(function (p) {
     const css = p.proxy.getViewport({ scale: scale });
-    const bitmap = p.proxy.getViewport({ scale: scale * dpr });
-    p.canvas.width = Math.floor(bitmap.width);
-    p.canvas.height = Math.floor(bitmap.height);
     p.canvas.style.width = Math.floor(css.width) + 'px';
     p.canvas.style.height = Math.floor(css.height) + 'px';
-    return { page: p, viewport: bitmap };
+    return { page: p, viewport: p.proxy.getViewport({ scale: scale * dpr }) };
   });
 
   applySize();
@@ -238,14 +294,21 @@ async function render() {
   for (const job of jobs) {
     if (seq !== renderSeq) return;
     const p = job.page;
+    const off = document.createElement('canvas');
+    off.width = Math.floor(job.viewport.width);
+    off.height = Math.floor(job.viewport.height);
     try {
-      p.task = p.proxy.render({ canvas: p.canvas, viewport: job.viewport });
+      p.task = p.proxy.render({ canvas: off, viewport: job.viewport });
       await p.task.promise;
       p.task = null;
     } catch (err) {
       if (seq === renderSeq && err && err.name !== 'RenderingCancelledException') throw err;
       return;
     }
+    if (seq !== renderSeq) return;
+    p.canvas.width = off.width;
+    p.canvas.height = off.height;
+    p.canvas.getContext('2d').drawImage(off, 0, 0);
   }
 }
 
@@ -264,10 +327,9 @@ function setZoom(next, anchor) {
   const top = (stage.scrollTop + ay) * ratio - ay;
 
   zoom = target;
-  render().then(function () {
-    stage.scrollLeft = left;
-    stage.scrollTop = top;
-  });
+  render();
+  stage.scrollLeft = left;
+  stage.scrollTop = top;
 }
 
 function updateControls() {
@@ -319,6 +381,7 @@ function addPan() {
   let from = null;
   stage.addEventListener('pointerdown', function (e) {
     if (native || e.pointerType === 'touch' || zoom <= 1.005 || e.button !== 0) return;
+    if (e.target.closest && e.target.closest('.viewer-link')) return;
     from = { x: e.clientX, y: e.clientY, left: stage.scrollLeft, top: stage.scrollTop };
     stage.setPointerCapture(e.pointerId);
     stage.classList.add('is-panning');

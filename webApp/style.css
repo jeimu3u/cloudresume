@@ -169,6 +169,8 @@ ul{margin:0;padding:0;list-style:none}
 .viewer{position:fixed;inset:0;z-index:50;display:grid;place-items:center;padding:24px;--panel-base-w:820px;--panel-base-h:940px}
 .viewer-scrim{position:absolute;inset:0;background:rgba(20,30,60,.32);backdrop-filter:blur(10px) saturate(1.1);-webkit-backdrop-filter:blur(10px) saturate(1.1);opacity:0;transition:opacity .28s ease;cursor:pointer}
 .viewer-panel{position:relative;display:flex;flex-direction:column;width:min(var(--panel-w,var(--panel-base-w)),100%);height:min(var(--panel-h,var(--panel-base-h)),100%);background:var(--paper);border-radius:20px;overflow:hidden;box-shadow:0 30px 80px rgba(20,30,60,.26),0 2px 8px rgba(20,30,60,.10);opacity:0;transform:translateY(16px) scale(.985);transition:opacity .28s ease,transform .28s cubic-bezier(.2,.7,.2,1)}
+.viewer.is-fluid .viewer-panel{transition:opacity .28s ease,transform .28s cubic-bezier(.2,.7,.2,1),width .26s cubic-bezier(.2,.7,.2,1),height .26s cubic-bezier(.2,.7,.2,1)}
+.viewer.is-fluid .viewer-page{transition:width .26s cubic-bezier(.2,.7,.2,1),height .26s cubic-bezier(.2,.7,.2,1)}
 .viewer.is-open .viewer-scrim{opacity:1}
 .viewer.is-open .viewer-panel{opacity:1;transform:none}
 
@@ -197,6 +199,10 @@ ul{margin:0;padding:0;list-style:none}
 .viewer-stage.is-zoomed{cursor:grab;scrollbar-gutter:stable}
 .viewer-stage.is-panning{cursor:grabbing}
 .viewer-doc{display:flex;flex-direction:column;gap:18px}
+.viewer-sheet{position:relative;align-self:center;line-height:0}
+.viewer-links{position:absolute;inset:0}
+.viewer-link{position:absolute;display:block;border-radius:3px;cursor:pointer;transition:background-color .2s ease,box-shadow .2s ease}
+.viewer-link:hover,.viewer-link:focus-visible{background:rgba(31,63,184,.12);box-shadow:0 0 0 2px rgba(31,63,184,.20);outline:none}
 .viewer-page{display:block;max-width:none;border-radius:4px;background:#fff;box-shadow:0 10px 34px rgba(20,30,60,.16),0 1px 3px rgba(20,30,60,.10)}
 .viewer-status{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);margin:0;font-family:var(--mono);font-size:13px;color:var(--ink-3)}
 
@@ -223,6 +229,7 @@ body.viewer-open{overflow:hidden;padding-right:var(--scrollbar,0px)}
 
 @media (prefers-reduced-motion: reduce){
   .viewer-scrim,.viewer-panel,.viewer-btn,.viewer-level{transition:none}
+  .viewer.is-fluid .viewer-panel,.viewer.is-fluid .viewer-page{transition:none}
   .viewer-btn::after,.viewer-level::after{transition:none}
   .viewer-panel{transform:none}
 }
